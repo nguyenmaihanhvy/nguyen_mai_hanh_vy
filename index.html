@@ -103,36 +103,80 @@
     </section>
 
     <section id="experience">
+        <section id="education">
         <h2 class="section-title">Học vấn</h2>
-        <div class="jobs-container">
-            <div class="tab-list">
-                <div class="tab-item active" onclick="showTab('edu')">Đào tạo</div>
-                <div class="tab-item" onclick="showTab('cert')">Chứng chỉ</div>
+        <div class="jobs-container" style="display: flex; gap: 30px; margin-top: 2rem;">
+            <div class="tab-list" style="border-left: 2px solid #334155; list-style: none; padding: 0; margin: 0; min-width: 200px;">
+                <div class="tab-item active" onclick="showTab('edu')" id="tab-edu" style="padding: 12px 20px; cursor: pointer; color: var(--slate-400); font-size: 0.9rem; transition: 0.3s;">Chuyên môn</div>
+                <div class="tab-item" onclick="showTab('cert')" id="tab-cert" style="padding: 12px 20px; cursor: pointer; color: var(--slate-400); font-size: 0.9rem; transition: 0.3s;">Chứng chỉ</div>
             </div>
-            <div class="job-content">
+            
+            <div class="job-content" style="flex: 1;">
                 <div id="edu-content">
-                    <h3>Truyền thông Marketing <span class="company">@ Đại học Tài chính - Marketing</span></h3>
-                    <p class="date">2020 - 2024</p>
-                    <ul>
-                        <li>Tốt nghiệp loại Giỏi chuyên ngành Marketing Communications.</li>
-                        <li>Nắm vững kiến thức về nghiên cứu thị trường, lập kế hoạch nội dung và chiến lược truyền thông.</li>
+                    <h3 style="margin: 0; font-size: 1.3rem; color: var(--text-color);">Truyền thông Marketing <span style="color: var(--accent-color);">@ Đại học Tài chính - Marketing</span></h3>
+                    <p style="font-size: 0.85rem; color: var(--slate-400); margin: 5px 0 20px; font-family: monospace;">2021 - 2025</p>
+                    <ul class="project-description" style="list-style: none; padding: 25px; background: var(--secondary-bg); border-radius: 4px;">
+                        <li style="position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--slate-400);">
+                            <span style="position: absolute; left: 0; color: var(--accent-color);">▹</span>
+                            Tốt nghiệp loại Giỏi chuyên ngành Truyền thông Marketing.
+                        </li>
                     </ul>
                 </div>
+
                 <div id="cert-content" style="display: none;">
-                    <h3>Chứng chỉ chuyên môn</h3>
-                    <p class="date">2021 - 2024</p>
-                    <ul>
-                        <li>800 TOEIC | 2024</li>
-                        <li>MOS Excel 2016 | 2024</li>
-                        <li>MOS Word 2016 | 2022</li>
-                        <li>The Fundamentals of Digital Marketing | 2021</li>
-                        <li>Digital Body Language | 2021</li>
+                    <h3 style="margin: 0; font-size: 1.3rem; color: var(--text-color);">Chứng chỉ chuyên môn</h3>
+                    <p style="font-size: 0.85rem; color: var(--slate-400); margin: 5px 0 20px; font-family: monospace;">2021 - 2024</p>
+                    <ul class="project-description" style="list-style: none; padding: 25px; background: var(--secondary-bg); border-radius: 4px;">
+                        <li style="position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--slate-400);"><span style="position: absolute; left: 0; color: var(--accent-color);">▹</span> 800 TOEIC | 2024</li>
+                        <li style="position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--slate-400);"><span style="position: absolute; left: 0; color: var(--accent-color);">▹</span> MOS Excel 2016 | 2024</li>
+                        <li style="position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--slate-400);"><span style="position: absolute; left: 0; color: var(--accent-color);">▹</span> MOS Word 2016 | 2022</li>
+                        <li style="position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--slate-400);"><span style="position: absolute; left: 0; color: var(--accent-color);">▹</span> The Fundamentals of Digital Marketing | 2021</li>
+                        <li style="position: relative; padding-left: 20px; color: var(--slate-400);"><span style="position: absolute; left: 0; color: var(--accent-color);">▹</span> Digital Body Language | 2021</li>
                     </ul>
-                    <a href="https://drive.google.com/drive/folders/1--cnJpvD1aERClkD5jV259e1Td-h_BZb" target="_blank" class="btn" style="margin-top: 10px;">Xem kho chứng chỉ →</a>
+                    <a href="https://drive.google.com/drive/folders/1--cnJpvD1aERClkD5jV259e1Td-h_BZb" target="_blank" class="btn" style="margin-top: 20px;">Xem kho chứng chỉ →</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        function showTab(type) {
+            const tabEdu = document.getElementById('tab-edu');
+            const tabCert = document.getElementById('tab-cert');
+            const eduContent = document.getElementById('edu-content');
+            const certContent = document.getElementById('cert-content');
+            
+            if (type === 'edu') {
+                tabEdu.classList.add('active');
+                tabEdu.style.color = "var(--accent-color)";
+                tabEdu.style.borderLeft = "2px solid var(--accent-color)";
+                tabEdu.style.background = "rgba(56, 189, 248, 0.1)";
+
+                tabCert.classList.remove('active');
+                tabCert.style.color = "var(--slate-400)";
+                tabCert.style.borderLeft = "none";
+                tabCert.style.background = "none";
+
+                eduContent.style.display = 'block';
+                certContent.style.display = 'none';
+            } else {
+                tabCert.classList.add('active');
+                tabCert.style.color = "var(--accent-color)";
+                tabCert.style.borderLeft = "2px solid var(--accent-color)";
+                tabCert.style.background = "rgba(56, 189, 248, 0.1)";
+
+                tabEdu.classList.remove('active');
+                tabEdu.style.color = "var(--slate-400)";
+                tabEdu.style.borderLeft = "none";
+                tabEdu.style.background = "none";
+
+                eduContent.style.display = 'none';
+                certContent.style.display = 'block';
+            }
+        }
+        // Thiết lập trạng thái mặc định khi tải trang
+        window.onload = () => showTab('edu');
+    </script>
 
     <section id="skills">
         <h2 class="section-title">Kỹ năng & Công cụ</h2>
@@ -195,9 +239,15 @@
                     <span class="project-overline">6/2024 - 9/2024</span>
                     <h3 class="project-title">Thực tập sinh Design @ HUMA AGENCY</h3>
                   <div class="project-description">
-    <ul>
-        <li>Thiết kế ấn phẩm hình ảnh cho các bài đăng Social Media theo dự án.</li>
-        <li>Hỗ trợ xây dựng nội dung bài viết và thực hiện các chiến dịch seeding cộng đồng.</li>
+    <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="position: relative; padding-left: 20px; margin-bottom: 10px;">
+            <span style="position: absolute; left: 0; color: var(--accent-color);">▹</span>
+            Thiết kế ấn phẩm hình ảnh cho các bài đăng Social Media theo dự án.
+        </li>
+        <li style="position: relative; padding-left: 20px; margin-bottom: 10px;">
+            <span style="position: absolute; left: 0; color: var(--accent-color);">▹</span>
+            Hỗ trợ xây dựng nội dung bài viết và thực hiện các chiến dịch seeding cộng đồng.
+        </li>
     </ul>
 </div>
                     <ul class="project-tech-list">
@@ -213,10 +263,19 @@
                     <span class="project-overline">1/2024 - 6/2024</span>
                     <h3 class="project-title">Content Marketing (Part-time) @ VDS</h3>
                   <div class="project-description">
-    <ul>
-        <li>Định hướng và quản lý nội dung cho Fanpage và Youtube.</li>
-        <li>Xây dựng kịch bản, edit video Shorts và thiết kế poster truyền thông.</li>
-        <li>Thực hiện seeding để tăng độ nhận diện thương hiệu.</li>
+    <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="position: relative; padding-left: 20px; margin-bottom: 10px;">
+            <span style="position: absolute; left: 0; color: var(--accent-color);">▹</span>
+            Định hướng và quản lý nội dung cho Fanpage và Youtube.
+        </li>
+        <li style="position: relative; padding-left: 20px; margin-bottom: 10px;">
+            <span style="position: absolute; left: 0; color: var(--accent-color);">▹</span>
+            Xây dựng kịch bản, edit video Shorts và thiết kế poster truyền thông.
+        </li>
+        <li style="position: relative; padding-left: 20px;">
+            <span style="position: absolute; left: 0; color: var(--accent-color);">▹</span>
+            Thực hiện seeding để tăng độ nhận diện thương hiệu trong các nhóm mục tiêu.
+        </li>
     </ul>
 </div>
                     <ul class="project-tech-list">
