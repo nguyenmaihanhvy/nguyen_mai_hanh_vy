@@ -366,38 +366,41 @@
         .job-date { margin-top: 10px; }
     }
 </style>
-<section id="performance" style="padding: 80px 15%;">
+<section id="performance" style="padding: 100px 10%;">
     <h2 class="section-title">Hiệu quả công việc</h2>
 
     <div class="performance-container">
         
         <div class="performance-block">
             <h3 class="company-label">MCV Network</h3>
+            
+            <div class="perf-card-large">
+                <span class="perf-tag">Facebook Analytics - WeTunes</span>
+                <div class="perf-images-large">
+                    <div class="img-wrapper">
+                        <img src="mcv_fb_stats_1.jpg" alt="Facebook Stats">
+                        <span class="img-hint">Di chuột để phóng to số liệu</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <img src="mcv_fb_stats_2.jpg" alt="Facebook Stats">
+                    </div>
+                </div>
+                <div class="perf-content">
+                    <p>▹ Tăng trưởng lượt tiếp cận và tương tác thực tế qua các chiến dịch nội dung[cite: 103, 104].</p>
+                </div>
+            </div>
+
             <div class="performance-grid">
                 <div class="perf-card">
-                    <span class="perf-tag">Facebook - WeTunes</span>
-                    <div class="perf-images">
-                        <img src="mcv_fb_1.jpg" alt="WeTunes FB 1">
-                        <img src="mcv_fb_2.jpg" alt="WeTunes FB 2">
-                    </div>
-                    <div class="perf-content">
-                        <p>▹ [Nhập nội dung hiệu quả Facebook tại đây...]</p>
+                    <span class="perf-tag">TikTok WeTunes</span>
+                    <div class="img-wrapper">
+                        <img src="mcv_tt_wt.jpg" style="aspect-ratio: 16/9;">
                     </div>
                 </div>
                 <div class="perf-card">
-                    <span class="perf-tag">TikTok - Multi Channels</span>
-                    <div class="perf-channels">
-                        <div class="channel-item">
-                            <small>WeTunes</small>
-                            <img src="mcv_tt_wetunes.jpg">
-                        </div>
-                        <div class="channel-item">
-                            <small>Bài Gì Cũng Có</small>
-                            <img src="mcv_tt_bgcc.jpg">
-                        </div>
-                    </div>
-                    <div class="perf-content">
-                        <p>▹ [Nhập nội dung hiệu quả TikTok tại đây...]</p>
+                    <span class="perf-tag">TikTok Bài Gì Cũng Có</span>
+                    <div class="img-wrapper">
+                        <img src="mcv_tt_bgcc.jpg" style="aspect-ratio: 16/9;">
                     </div>
                 </div>
             </div>
@@ -405,18 +408,15 @@
 
         <div class="performance-block">
             <h3 class="company-label">HUMA Agency</h3>
-            <div class="perf-card">
-                <span class="perf-tag">Design & Creative</span>
-                <div class="perf-images-5">
+            <div class="perf-card-large">
+                <span class="perf-tag">Portfolio Thiết kế sáng tạo</span>
+                <div class="perf-images-grid-5">
                     <img src="huma_1.jpg"><img src="huma_2.jpg"><img src="huma_3.jpg"><img src="huma_4.jpg"><img src="huma_5.jpg">
-                </div>
-                <div class="perf-content">
-                    <p>▹ [Nhập nội dung thành tựu thiết kế tại đây...]</p>
                 </div>
             </div>
         </div>
 
-        <div class="performance-block" style="margin-bottom: 0;">
+        <div class="performance-block">
             <h3 class="company-label">VDS</h3>
             <div class="performance-grid">
                 <div class="perf-card">
@@ -424,18 +424,11 @@
                     <div class="perf-images-3">
                         <img src="vds_p1.jpg"><img src="vds_p2.jpg"><img src="vds_p3.jpg">
                     </div>
-                    <div class="perf-content">
-                        <p>▹ [Nhập nội dung hiệu quả hình ảnh tại đây...]</p>
-                    </div>
                 </div>
                 <div class="perf-card">
-                    <span class="perf-tag">Video Production</span>
-                    <div class="video-placeholder">
-                        <i class="fas fa-play-circle" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 10px;"></i>
-                        <p style="font-size: 0.8rem; color: var(--slate-400);">Video Content / Drive Link</p>
-                    </div>
-                    <div class="perf-content">
-                        <p>▹ [Nhập nội dung hiệu quả video tại đây...]</p>
+                    <span class="perf-tag">Video Analytics</span>
+                    <div class="img-wrapper">
+                        <img src="vds_video_stats.jpg" alt="Youtube Stats">
                     </div>
                 </div>
             </div>
@@ -445,34 +438,55 @@
 </section>
 
 <style>
-    /* Layout cho Hiệu quả công việc */
-    .performance-container { display: flex; flex-direction: column; gap: 60px; }
-    .company-label { color: var(--text-color); font-size: 1.5rem; margin-bottom: 25px; border-left: 4px solid var(--accent-color); padding-left: 15px; }
+    .performance-container { display: flex; flex-direction: column; gap: 80px; }
+    .company-label { color: var(--text-color); font-size: 1.8rem; margin-bottom: 30px; }
     
-    .performance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .perf-card { background: var(--secondary-bg); border: 1px solid #334155; border-radius: 12px; padding: 25px; transition: 0.4s; }
-    .perf-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
-    
-    .perf-tag { color: var(--accent-color); font-family: monospace; font-size: 0.85rem; margin-bottom: 15px; display: block; text-transform: uppercase; }
-    
-    /* Các dạng lưới ảnh */
-    .perf-images { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .perf-images-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
-    .perf-images-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .perf-channels { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    
-    .perf-card img { width: 100%; border-radius: 6px; aspect-ratio: 4/3; object-fit: cover; background: #0f172a; }
-    .channel-item small { display: block; color: var(--slate-400); margin-bottom: 5px; font-size: 0.75rem; text-align: center; }
-    
-    .perf-content { margin-top: 20px; border-top: 1px solid #334155; padding-top: 15px; font-size: 0.9rem; color: var(--slate-400); }
-    
-    .video-placeholder { 
-        height: 120px; border: 1px dashed #334155; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; 
+    /* Khung card lớn để xem số liệu */
+    .perf-card-large { 
+        background: var(--secondary-bg); 
+        border: 1px solid #334155; 
+        border-radius: 16px; 
+        padding: 30px; 
+        margin-bottom: 20px;
     }
 
+    .performance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .perf-card { background: var(--secondary-bg); border: 1px solid #334155; border-radius: 16px; padding: 20px; }
+
+    /* Hiệu ứng Phóng to ảnh */
+    .img-wrapper { 
+        position: relative; 
+        overflow: hidden; 
+        border-radius: 8px; 
+        background: #000;
+        cursor: zoom-in;
+    }
+    .img-wrapper img { 
+        width: 100%; 
+        display: block; 
+        transition: transform 0.5s ease; 
+        object-fit: contain; /* Đảm bảo không bị mất thông tin ảnh */
+    }
+    .img-wrapper:hover img { transform: scale(1.5); } /* Phóng to 1.5 lần khi hover */
+    
+    .img-hint {
+        position: absolute; bottom: 10px; right: 10px;
+        background: rgba(0,0,0,0.6); color: #fff;
+        font-size: 0.7rem; padding: 4px 8px; border-radius: 4px;
+        pointer-events: none;
+    }
+
+    /* Layout ảnh */
+    .perf-images-large { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .perf-images-grid-5 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; } /* HUMA: 3 trên 2 dưới */
+    .perf-images-3 { display: grid; grid-template-columns: 1fr; gap: 10px; }
+
+    .perf-tag { color: var(--accent-color); font-family: monospace; font-size: 0.9rem; margin-bottom: 20px; display: block; }
+    .perf-content { margin-top: 25px; border-top: 1px solid #334155; padding-top: 20px; color: var(--slate-400); }
+
     @media (max-width: 992px) {
-        .performance-grid { grid-template-columns: 1fr; }
-        .perf-images-5 { grid-template-columns: repeat(3, 1fr); }
+        .performance-grid, .perf-images-large { grid-template-columns: 1fr; }
+        .perf-images-grid-5 { grid-template-columns: 1fr 1fr; }
     }
 </style>
 
