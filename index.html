@@ -146,3 +146,121 @@
             </ul>
         </div>
     </nav>
+<style>
+        /* CSS bổ sung dành riêng cho Hero Section */
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            gap: 4rem; 
+            padding-top: 100px;
+        }
+
+        .hero-image { 
+            width: 320px; 
+            height: 320px; 
+            /* Shape theo trend organic đang rất hot trong ngành Media */
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            border: 2px solid var(--accent-color); 
+            overflow: hidden; 
+            flex-shrink: 0; 
+            box-shadow: 20px 20px 50px rgba(79, 70, 229, 0.1); 
+            background: var(--secondary-bg);
+            transition: var(--transition);
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        .hero-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px rgba(79, 70, 229, 0.15);
+        }
+
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        .hero-content { flex: 1; }
+
+        .hero h1 { 
+            font-size: clamp(2.5rem, 5vw, 4rem); 
+            margin: 10px 0 20px 0; 
+            line-height: 1.1; 
+            color: var(--text-color); 
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .intro-text { 
+            font-size: 1.1rem; 
+            color: var(--slate-400); 
+            max-width: 600px; 
+            margin-bottom: 2.5rem; 
+            border-left: 3px solid var(--accent-color); 
+            padding-left: 20px; 
+            line-height: 1.8;
+        }
+
+        /* Tối ưu lại Button cho trend sáng sủa */
+        .btn { 
+            display: inline-block; 
+            padding: 1rem 2rem; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-size: 0.95rem; 
+            transition: var(--transition); 
+            font-weight: 700;
+        }
+
+        .btn-filled { 
+            background: var(--accent-color); 
+            color: #ffffff; 
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-filled:hover { 
+            background: #3730a3; /* Indigo đậm hơn khi hover */
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid #e2e8f0; 
+            color: var(--text-color); 
+        }
+
+        .btn-outline:hover { 
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 992px) {
+            .hero { flex-direction: column-reverse; text-align: center; gap: 2rem; }
+            .intro-text { margin: 0 auto 2.5rem; border-left: none; border-top: 3px solid var(--accent-color); padding: 20px 0 0; }
+            .btn-group { display: flex; flex-direction: column; gap: 10px; }
+            .btn { margin: 0 !important; width: 100%; }
+        }
+    </style>
+
+    <section id="about" class="hero">
+        <div class="hero-image">
+            <img src="avatar.png" alt="Avatar" onerror="this.src='https://ui-avatars.com/api/?name=Hanh+Vy&background=4f46e5&color=fff&size=320'">
+        </div>
+        <div class="hero-content">
+            <span style="color: var(--accent-color); font-family: monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Xin chào, tôi tên là</span>
+            <h1>Nguyễn Mai Hạnh Vy.</h1>
+            <div class="intro-text">
+                Tôi là một sinh viên chuyên ngành <strong>Truyền thông Marketing</strong> vừa tốt nghiệp. Bản thân tôi dành nhiều năng lượng và thời gian cho việc tìm tòi và khám phá bản thân. Tôi yêu thích việc lắng nghe và học hỏi để bồi dưỡng một nền tảng kiến thức vững chắc cho hành trình sự nghiệp tương lai.
+            </div>
+            <div class="btn-group">
+                <a href="mailto:nmhv29@gmail.com" class="btn btn-filled">Kết nối với tôi</a>
+                <a href="CV_NguyenMaiHanhVy.pdf" class="btn btn-outline" download style="margin-left: 10px;">Tải CV</a>
+            </div>
+        </div>
+    </section>
