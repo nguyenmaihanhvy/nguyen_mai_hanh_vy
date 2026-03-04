@@ -8,26 +8,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { 
-            --bg-color: #fcfcfd; /* Trắng sứ hiện đại */
-            --text-color: #1e293b; /* Xanh đen sâu */
-            --accent-color: #4f46e5; /* Electric Blue trẻ trung */
-            --secondary-accent: #ec4899; /* Pink Vibrant cho truyền thông */
-            --secondary-bg: #ffffff; 
+            /* Bảng màu mới: Bright & Professional */
+            --bg-color: #ffffff; 
+            --text-color: #0f172a; 
+            --accent-color: #4f46e5; /* Indigo trẻ trung */
+            --secondary-bg: #f8fafc; 
             --slate-400: #64748b; 
-            --light-gradient: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+            --nav-bg: rgba(255, 255, 255, 0.85);
             --max-width: 1000px; 
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { box-sizing: border-box; scroll-behavior: smooth; }
+        
         body { 
             margin: 0; 
             font-family: 'Inter', sans-serif; 
             background-color: var(--bg-color); 
             color: var(--text-color); 
             line-height: 1.7; 
+            -webkit-font-smoothing: antialiased;
         }
         
-        /* Glassmorphism Navigation */
+        /* Navigation Tối ưu UX/UI */
         nav { 
             display: flex; 
             justify-content: center; 
@@ -35,25 +38,65 @@
             position: fixed; 
             width: 100%; 
             top: 0; 
-            background: rgba(255, 255, 255, 0.8); 
-            backdrop-filter: blur(15px); 
+            background: var(--nav-bg); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
             z-index: 1000; 
-            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+            transition: var(--transition);
         }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: var(--max-width); padding: 1.2rem 2rem; }
+
+        .nav-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            width: 100%; 
+            max-width: var(--max-width); 
+            padding: 1.2rem 2rem; 
+        }
         
         .logo { 
             font-weight: 800; 
-            font-size: 1.4rem; 
-            background: var(--light-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
+            font-size: 1.3rem; 
+            color: var(--text-color); 
+            text-transform: uppercase; 
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
         }
-        nav ul { display: flex; list-style: none; gap: 2rem; margin: 0; padding: 0; }
-        nav a { text-decoration: none; color: var(--text-color); font-size: 0.9rem; font-weight: 600; transition: 0.3s; opacity: 0.8; }
-        nav a:hover { color: var(--accent-color); opacity: 1; }
 
+        .logo::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            margin-left: 4px;
+        }
+
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 2.5rem; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        nav a { 
+            text-decoration: none; 
+            color: var(--text-color); 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+
+        nav a:hover { 
+            color: var(--accent-color); 
+            opacity: 1;
+        }
+
+        /* Tối ưu các section chung */
         section { 
             padding: 120px 2rem 80px; 
             max-width: var(--max-width); 
@@ -61,236 +104,45 @@
         }
 
         .section-title { 
-            font-size: 2.2rem; 
-            margin-bottom: 3.5rem; 
+            font-size: 2.25rem; 
+            font-weight: 800;
+            margin-bottom: 3rem; 
+            position: relative; 
             display: flex; 
             align-items: center; 
-            font-weight: 800;
+            width: 100%; 
+            white-space: nowrap; 
+            letter-spacing: -1px;
         }
+
         .section-title::after { 
             content: ''; 
-            height: 4px; 
-            width: 60px; 
-            background: var(--light-gradient); 
+            display: block; 
+            height: 2px; 
+            width: 100%; 
+            max-width: 200px; 
+            background: linear-gradient(to right, var(--accent-color), transparent); 
             margin-left: 20px; 
-            border-radius: 10px;
-        }
-        
-        /* Hero Section */
-        .hero { min-height: 90vh; display: flex; align-items: center; gap: 4rem; }
-        .hero-image { 
-            width: 320px; height: 320px; 
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Dạng organic shape đang trend */
-            overflow: hidden; 
-            flex-shrink: 0; 
-            box-shadow: 20px 20px 60px #d1d9e6, -20px -20px 60px #ffffff;
-            transition: 0.5s ease-in-out;
-            background: var(--light-gradient);
-            padding: 5px;
-        }
-        .hero-image:hover { border-radius: 50%; }
-        .hero-image img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; background: white; }
-        
-        .hero h1 { 
-            font-size: clamp(2.5rem, 5vw, 3.5rem); 
-            margin: 10px 0; 
-            line-height: 1.1; 
-            font-weight: 800;
-            color: #0f172a;
-        }
-        .intro-text { 
-            font-size: 1.15rem; 
-            color: var(--slate-400); 
-            max-width: 600px; 
-            margin: 1.5rem 0 2.5rem; 
-            border-left: 4px solid var(--secondary-accent); 
-            padding-left: 25px; 
+            border-radius: 2px;
         }
 
-        /* Buttons */
-        .btn { 
-            display: inline-block; 
-            padding: 1rem 2.2rem; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-size: 0.95rem; 
-            transition: 0.3s; 
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
-        }
-        .btn-filled { 
-            background: var(--light-gradient); 
-            color: white; 
-            border: none;
-        }
-        .btn-filled:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4); }
-        .btn-outline { 
-            border: 2px solid var(--accent-color); 
-            color: var(--accent-color); 
-            margin-left: 15px;
-        }
-
-        /* Skills Card */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; }
-        .skill-item { 
-            background: var(--secondary-bg); 
-            padding: 2rem 1rem; 
-            border-radius: 20px; 
-            text-align: center; 
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: 0.4s; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-        }
-        .skill-item:hover { 
-            transform: translateY(-10px); 
-            background: #fff;
-            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
-            border-color: var(--accent-color);
-        }
-        .skill-item i { font-size: 2.5rem; margin-bottom: 15px; background: var(--light-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .skill-item img { width: 45px; height: 45px; margin-bottom: 15px; }
-
-        /* Experience Timeline */
-        .ryan-timeline-dark::before { background: #e2e8f0; }
-        .timeline-card-dark { 
-            background: white; 
-            border: 1px solid rgba(0,0,0,0.05); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border-radius: 20px;
-        }
-        .timeline-card-dark:hover { border-color: var(--secondary-accent); }
-        .job-title { color: #0f172a; }
-        .company-name { color: var(--accent-color); font-weight: 700; }
-        
-        /* Performance Card */
-        .perf-card-large { 
-            background: white; 
-            border: none; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-            border-radius: 24px; 
-        }
-        .stat-value { color: var(--accent-color); }
-
-        /* Lightbox & Utils */
-        .lightbox { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .lightbox img { box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
-        .close-btn { color: var(--text-color); }
-
-        @media (max-width: 992px) { 
-            .hero { flex-direction: column-reverse; text-align: center; padding-top: 100px; }
-            .intro-text { border-left: none; border-top: 4px solid var(--secondary-accent); padding: 20px 0 0; margin: 2rem auto; }
-            .hero-image { width: 250px; height: 250px; }
-            .btn-outline { margin: 15px 0 0 0; display: block; }
+        @media (max-width: 768px) {
+            .nav-container { padding: 1rem 1.5rem; }
+            nav ul { gap: 1.2rem; }
+            nav a { font-size: 0.8rem; }
+            .section-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">HANH VY.</div>
+            <div class="logo">Hạnh Vy</div>
             <ul>
-                <li><a href="#about">Bio</a></li>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#education">Học vấn</a></li>
                 <li><a href="#skills">Kỹ năng</a></li>
                 <li><a href="#experience">Kinh nghiệm</a></li>
-                <li><a href="#performance">Dự án</a></li>
             </ul>
         </div>
     </nav>
-
-    <section id="about" class="hero">
-        <div class="hero-content">
-            <span style="color: var(--secondary-accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem;">Marketing Communications</span>
-            <h1>Nguyễn Mai Hạnh Vy</h1>
-            <div class="intro-text">
-                Xin chào! Tôi là một <strong>Content Creator & Marketing Executive</strong>. Tôi không chỉ làm nội dung, tôi xây dựng những câu chuyện có sức lan tỏa và mang lại giá trị thực cho thương hiệu.
-            </div>
-            <div class="btn-group">
-                <a href="mailto:nmhv29@gmail.com" class="btn btn-filled">Hợp tác ngay</a>
-                <a href="CV_NguyenMaiHanhVy.pdf" class="btn btn-outline" download>Tải Portfolio PDF</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="avatar.png" alt="Avatar" onerror="this.src='https://ui-avatars.com/api/?name=Hanh+Vy&background=4f46e5&color=fff&size=320'">
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2 class="section-title">Kỹ năng & Công cụ</h2>
-        <div class="skills-grid">
-            <div class="skill-item"><i class="fas fa-lightbulb"></i><div>Creative Idea</div></div>
-            <div class="skill-item"><i class="fas fa-pen-nib"></i><div>Content Planning</div></div>
-            <div class="skill-item"><i class="fas fa-chart-line"></i><div>Data Analysis</div></div>
-            <div class="skill-item"><i class="fas fa-robot"></i><div>AI Tools</div></div>
-        </div>
-        
-        <h3 style="margin: 4rem 0 2rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--slate-400);">Design & Video Tools</h3>
-        <div class="skills-grid">
-            <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="PS"><div>Photoshop</div></div>
-            <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="AI"><div>Illustrator</div></div>
-            <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="PR"><div>Premiere Pro</div></div>
-            <div class="skill-item"><img src="https://v0.dev/placeholder.svg?height=45&width=45" alt="CapCut"><div>CapCut</div></div>
-        </div>
-    </section>
-
-    <section id="experience" class="custom-container">
-        <h2 class="section-title">Hành trình nghề nghiệp</h2>
-        <div class="ryan-timeline-dark">
-            <div class="timeline-block">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card-dark">
-                    <div class="card-header">
-                        <div class="header-main">
-                            <h3 class="job-title">Project Management Executive</h3>
-                            <h4 class="company-name">MCV Network</h4>
-                        </div>
-                        <span class="job-date">09/2024 – Hiện tại</span>
-                    </div>
-                    <ul class="job-desc-list">
-                        <li>Vận hành đa kênh TikTok & Fanpage tin tức âm nhạc.</li>
-                        <li>Bảo vệ bản quyền nội dung trên nền tảng Facebook & YouTube.</li>
-                    </ul>
-                </div>
-            </div>
-            </div>
-    </section>
-
-    <section id="performance">
-        <h2 class="section-title">Số liệu ấn tượng</h2>
-        <div class="perf-card-large">
-            <div class="card-header-flex">
-                <i class="fab fa-facebook" style="color: #1877F2; font-size: 2rem;"></i>
-                <span style="margin-left: 15px; font-weight: 800; font-size: 1.2rem;">WeTunes Project</span>
-            </div>
-            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0;">
-                <div class="stat-item">
-                    <span style="display:block; color: var(--slate-400); font-size: 0.9rem;">Followers tăng</span>
-                    <span class="stat-value" style="font-size: 2rem; font-weight: 800;">+63,000</span>
-                </div>
-                <div class="stat-item">
-                    <span style="display:block; color: var(--slate-400); font-size: 0.9rem;">Tổng lượt xem</span>
-                    <span class="stat-value" style="font-size: 2rem; font-weight: 800;">~60M Views</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact" style="text-align: center; padding: 6rem 2rem; background: #f8fafc;">
-        <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;">Let's make something great!</h2>
-        <p style="color: var(--slate-400); margin-bottom: 3rem;">Hạnh Vy luôn sẵn sàng cho những dự án sáng tạo mới.</p>
-        <a href="mailto:nmhv29@gmail.com" class="btn btn-filled">Gửi Email cho Vy</a>
-        <div style="margin-top: 4rem; font-size: 0.8rem; color: #cbd5e1;">
-            © 2026 NGUYỄN MAI HẠNH VY • DESIGNED WITH PASSION
-        </div>
-    </footer>
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-btn">&times;</span>
-        <img id="lightbox-img" src="" alt="Enlarged Image">
-    </div>
-
-    <script>
-        function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; document.body.style.overflow = 'auto'; }
-    </script>
-</body>
-</html>
