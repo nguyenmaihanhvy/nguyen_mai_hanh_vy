@@ -1118,30 +1118,32 @@
                 </div>
             </div>
             
-            <div class="main-topic" style="margin-top: 40px;">
-                <p style="color: var(--text-color); font-weight: 800; font-size: 1.2rem; margin-bottom: 5px;">Định hướng nội dung</p>
-                <p style="color: var(--slate-400); font-size: 0.95rem; margin-bottom: 25px;">Cập nhật liên tục tin tức giải trí, showbiz.</p>
+            <div class="main-topic" style="margin-top: 40px; text-align: center;">
+                <h2 style="color: var(--text-color); font-weight: 800; font-size: 2rem; margin-bottom: 15px; text-transform: uppercase;">Định hướng nội dung</h2>
+                <p style="color: var(--slate-400); line-height: 1.6; max-width: 800px; margin: 0 auto 30px;">
+                    Cập nhật liên tục tin tức giải trí, showbiz. Đội ngũ chuyên nghiệp của chúng tôi tập trung vào việc khai thác những khoảnh khắc đắt giá, xu hướng mới nhất để mang đến những nội dung chất lượng, đảm bảo mỗi sản phẩm truyền thông đều là một tác phẩm nghệ thuật sáng tạo.
+                </p>
                 
-                <div class="content-grid-reveal">
-                    <div class="reveal-card" onclick="openLightbox('tk_content_1.png')" style="aspect-ratio: 9/16;">
-                        <img src="tk_content_1.png" alt="TikTok Content">
-                        <div class="reveal-overlay">
-                            <h4 class="reveal-title">Viral Trends</h4>
-                            <p class="reveal-desc">Nắm bắt nhanh chóng các xu hướng âm nhạc và hiệu ứng hot nhất trên nền tảng.</p>
+                <div class="content-grid-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div class="reveal-card" onclick="openLightbox('tk_content_1.png')" style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 9/16; cursor: pointer;">
+                        <img src="tk_content_1.png" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;">
+                        <div class="reveal-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(79, 70, 229, 0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; opacity: 0; transform: translateY(100%); transition: 0.4s;">
+                            <h4 style="color: #fff; margin-bottom: 5px;">Viral Trends</h4>
+                            <p style="color: #eee; font-size: 0.8rem;">Bắt kịp nhanh chóng các xu hướng âm nhạc hot nhất.</p>
                         </div>
                     </div>
-                    <div class="reveal-card" onclick="openLightbox('tk_content_2.png')" style="aspect-ratio: 9/16;">
-                        <img src="tk_content_2.png" alt="TikTok Content">
-                        <div class="reveal-overlay">
-                            <h4 class="reveal-title">Artist Moments</h4>
-                            <p class="reveal-desc">Những khoảnh khắc đời thường và biểu diễn độc quyền của các nghệ sĩ nổi tiếng.</p>
+                    <div class="reveal-card" onclick="openLightbox('tk_content_2.png')" style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 9/16; cursor: pointer;">
+                        <img src="tk_content_2.png" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;">
+                        <div class="reveal-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(79, 70, 229, 0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; opacity: 0; transform: translateY(100%); transition: 0.4s;">
+                            <h4 style="color: #fff; margin-bottom: 5px;">Artist Life</h4>
+                            <p style="color: #eee; font-size: 0.8rem;">Khoảnh khắc độc quyền từ các nghệ sĩ nổi tiếng.</p>
                         </div>
                     </div>
-                    <div class="reveal-card" onclick="openLightbox('tk_content_3.png')" style="aspect-ratio: 9/16;">
-                        <img src="wt_fb_3.png" alt="TikTok Content">
-                        <div class="reveal-overlay">
-                            <h4 class="reveal-title">Short Storytelling</h4>
-                            <p class="reveal-desc">Kể những câu chuyện giải trí cô đọng, cuốn hút trong vòng chưa đầy 60 giây.</p>
+                    <div class="reveal-card" onclick="openLightbox('tk_content_3.png')" style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 9/16; cursor: pointer;">
+                        <img src="tk_content_3.png" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;">
+                        <div class="reveal-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(79, 70, 229, 0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; opacity: 0; transform: translateY(100%); transition: 0.4s;">
+                            <h4 style="color: #fff; margin-bottom: 5px;">Best Cuts</h4>
+                            <p style="color: #eee; font-size: 0.8rem;">Những phân đoạn đắt giá từ các chương trình giải trí.</p>
                         </div>
                     </div>
                 </div>
@@ -1149,6 +1151,11 @@
         </div>
     </div>
 </div>
+
+<style>
+    .reveal-card:hover img { transform: scale(1.1); }
+    .reveal-card:hover .reveal-overlay { opacity: 1 !important; transform: translateY(0) !important; }
+</style>
 </section>
 
 <footer id="contact">
