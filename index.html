@@ -1154,6 +1154,128 @@
             </div>
         </div>
     </div>
+    <style>
+    /* 1. KHUNG BAO CHUYÊN ĐỀ HUMA AGENCY */
+    .huma-section-wrapper {
+        background-color: #fff;
+        border-radius: 40px;
+        padding: 80px 0; /* Padding dọc, giữ 0 ở ngang để ảnh trượt tràn viền */
+        margin: 4rem 0;
+        border: 1px solid #f1f5f9;
+        overflow: hidden; /* Quan trọng để ẩn phần ảnh thừa khi trượt */
+    }
+
+    .huma-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #f97316 0%, #fbbf24 100%);
+        color: white;
+        padding: 8px 24px;
+        border-radius: 50px;
+        font-weight: 800;
+        margin-left: 40px; /* Căn lề theo padding chung của website */
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 20px rgba(249, 115, 22, 0.2);
+    }
+
+    /* 2. CẤU TRÚC TRƯỢT NGANG TỰ ĐỘNG (INFINITE SCROLL) */
+    .huma-gallery-container {
+        display: flex;
+        width: max-content; /* Để container dài theo số lượng ảnh */
+        gap: 20px;
+        padding: 20px 0;
+        animation: scrollGallery 30s linear infinite; /* Tốc độ trượt */
+    }
+
+    /* Tạm dừng khi di chuột vào để người xem kịp ngắm ảnh */
+    .huma-gallery-container:hover {
+        animation-play-state: paused;
+    }
+
+    .huma-gallery-item {
+        width: 300px;
+        height: 400px;
+        flex-shrink: 0;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #f8fafc;
+        border: 1px solid rgba(0,0,0,0.05);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .huma-gallery-item:hover {
+        transform: scale(1.05);
+        border-color: #f97316;
+    }
+
+    .huma-gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Keyframes cho hiệu ứng trượt */
+    @keyframes scrollGallery {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-320px * 10)); } /* - (chiều rộng item + gap) * số lượng ảnh */
+    }
+
+    /* 3. HIỆU ỨNG GLOW MÀU NÓNG CHO GALLERY */
+    .huma-item-glow:hover {
+        box-shadow: 0 0 30px rgba(249, 115, 22, 0.4);
+    }
+</style>
+
+<div class="huma-section-wrapper">
+    <div class="huma-badge">DESIGN PROJECTS @ HUMA AGENCY</div>
+    
+    <div style="padding: 0 40px; margin-bottom: 3rem;">
+        <h2 style="color: var(--text-color); font-weight: 800; font-size: 2.2rem; margin-bottom: 10px;">Thư viện sáng tạo</h2>
+        <p style="color: var(--slate-400); max-width: 700px; line-height: 1.6;">
+            Trong thời gian thực tập tại HUMA Agency, tôi đã trực tiếp tham gia thiết kế các ấn phẩm hình ảnh cho các chiến dịch Social Media. Dưới đây là những sản phẩm tiêu biểu thể hiện tư duy thiết kế và khả năng ứng dụng công cụ của bản thân.
+        </p>
+    </div>
+
+    <div class="huma-gallery-container">
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_1.png')">
+            <img src="huma_1.png" alt="Huma Design 1">
+        </div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_2.png')">
+            <img src="huma_2.png" alt="Huma Design 2">
+        </div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_3.png')">
+            <img src="huma_3.png" alt="Huma Design 3">
+        </div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_4.png')">
+            <img src="huma_4.png" alt="Huma Design 4">
+        </div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_5.png')">
+            <img src="huma_5.png" alt="Huma Design 5">
+        </div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_6.png')">
+            <img src="huma_6.png" alt="Huma Design 6">
+        </div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_7.png')">
+            <img src="huma_7.png" alt="Huma Design 7">
+        </div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_8.png')">
+            <img src="huma_8.png" alt="Huma Design 8">
+        </div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_9.png')">
+            <img src="huma_9.png" alt="Huma Design 9">
+        </div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_10.png')">
+            <img src="huma_10.png" alt="Huma Design 10">
+        </div>
+        
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_1.png')"><img src="huma_1.png"></div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_2.png')"><img src="huma_2.png"></div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_3.png')"><img src="huma_3.png"></div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_4.png')"><img src="huma_4.png"></div>
+        <div class="huma-gallery-item huma-item-glow" onclick="openLightbox('huma_5.png')"><img src="huma_5.png"></div>
+    </div>
+</div>
 </section>
 
 <style>
