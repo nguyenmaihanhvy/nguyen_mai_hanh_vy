@@ -1289,6 +1289,7 @@
     </div>
 </div>
     <style>
+    <style>
     /* 1. KHUNG BAO CHUYÊN ĐỀ VDS */
     .vds-section-wrapper {
         background-color: #fcfcfd;
@@ -1296,7 +1297,7 @@
         padding: 80px 0;
         margin: 4rem 0;
         border: 1px solid #f1f5f9;
-        overflow: hidden;
+        /* Xóa overflow: hidden ở đây nếu nó làm mất bóng đổ của tiêu đề */
     }
 
     .vds-badge {
@@ -1311,56 +1312,43 @@
         box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
     }
 
-    /* 2. HIỆU ỨNG HÀO QUANG PHÁT SÁNG NGOÀI (OUTER GLOW) */
+    /* 2. FIX LỖI ÁNH SÁNG: HIỆU ỨNG HÀO QUANG TRỌN VẸN */
     .vds-glow-item {
         position: relative;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: 2px solid transparent; /* Giữ chỗ cho viền */
+        border: 2px solid transparent;
+        z-index: 1; /* Đảm bảo item nổi lên trên để thấy rõ bóng */
     }
 
-    /* Khi hover: Nhấc khung và tỏa hào quang xanh lá - xanh lam */
+    /* Khi hover: Nhấc khung và tỏa hào quang không bị chặn */
     .vds-glow-item:hover {
         transform: translateY(-12px) scale(1.02);
-        z-index: 10;
-        /* Tạo hiệu ứng phát sáng bên ngoài khung */
-        box-shadow: 0 0 25px 5px rgba(16, 185, 129, 0.4), 
-                    0 0 45px 10px rgba(59, 130, 246, 0.3);
-        border-color: #10b981; /* Hiện viền màu xanh lá nhẹ */
+        z-index: 99; /* Ưu tiên hiển thị lớp sáng trên cùng */
+        /* Sử dụng nhiều lớp shadow để ánh sáng tỏa đều và sâu hơn */
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 
+                    0 0 40px rgba(59, 130, 246, 0.4),
+                    0 15px 35px rgba(0, 0, 0, 0.1);
+        border-color: rgba(16, 185, 129, 0.5);
     }
 
-    /* 3. SECTION 1: TĂNG TRƯỞNG KÊNH */
-    .vds-analytics-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        margin: 0 40px 4rem;
-    }
-
-    .vds-stats-card {
-        background: #fff;
-        border-radius: 20px;
-        padding: 15px;
-        border: 1px solid rgba(0,0,0,0.05);
-        height: 280px;
-        overflow: hidden;
-    }
-
-    .vds-stats-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-    /* 4. GALLERY TỰ ĐỘNG TRƯỢT */
+    /* 3. GALLERY TRƯỢT TỰ ĐỘNG - THÊM PADDING ĐỂ KHÔNG BỊ CẮT BÓNG */
     .vds-scroll-wrap {
         display: flex;
         width: max-content;
         gap: 25px;
-        padding: 30px 40px; /* Thêm padding để hào quang không bị cắt */
+        /* QUAN TRỌNG: Thêm padding dọc lớn để có không gian cho ánh sáng tỏa ra */
+        padding: 40px 40px; 
         animation: scrollVDS 35s linear infinite;
     }
 
     .vds-scroll-wrap:hover { animation-play-state: paused; }
+
+    /* Container bao quanh vùng trượt để ẩn phần thừa nhưng vẫn giữ không gian cho bóng */
+    .vds-gallery-viewport {
+        overflow: hidden;
+        margin: 0;
+        width: 100%;
+    }
 
     .vds-gallery-card {
         width: 280px;
@@ -1374,58 +1362,24 @@
 
     .vds-gallery-card img { width: 100%; height: 100%; object-fit: cover; }
 
-    .video-overlay {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0,0,0,0.2);
-        color: white;
-        font-size: 3rem;
-        pointer-events: none;
-    }
-
     @keyframes scrollVDS {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-305px * 5)); }
-    }
-
-    @media (max-width: 768px) {
-        .vds-analytics-grid { grid-template-columns: 1fr; }
-        .vds-scroll-wrap { animation-duration: 20s; }
     }
 </style>
 
 <div class="vds-section-wrapper">
     <div class="vds-badge">DIGITAL SOLUTIONS @ VDS</div>
     
-    <div style="padding: 0 40px; margin-bottom: 3rem;">
+    <div style="padding: 0 40px; margin-bottom: 2rem;">
         <h2 style="color: var(--text-color); font-weight: 800; font-size: 2.2rem; margin-bottom: 10px;">Hiệu quả bùng nổ</h2>
-        <p style="color: var(--slate-400); max-width: 750px; line-height: 1.7;">
-            Tôi đã trực tiếp tham gia định hướng và quản lý nội dung cho các nền tảng số tại VDS, thúc đẩy sự tăng trưởng cộng đồng thông qua các chiến dịch hình ảnh và video Shorts bắt trend.
-        </p>
     </div>
 
-    <div class="vds-analytics-grid">
-        <div class="vds-glow-item">
-            <p style="font-weight: 700; margin-bottom: 15px; color: #1877F2;"><i class="fab fa-facebook-square"></i> Fanpage Growth</p>
-            <div class="vds-stats-card" onclick="openLightbox('vds_fb_stats.png')">
-                <img src="vds_fb_stats.png" alt="Analytics">
-            </div>
-        </div>
-        <div class="vds-glow-item">
-            <p style="font-weight: 700; margin-bottom: 15px; color: #FF0000;"><i class="fab fa-youtube"></i> Youtube Channel</p>
-            <div class="vds-stats-card" onclick="openLightbox('vds_yt_stats.png')">
-                <img src="vds_yt_stats.png" alt="Analytics">
-            </div>
-        </div>
-    </div>
-
-    <div style="padding: 0 40px; font-weight: 800; font-size: 1.2rem; color: var(--text-color); margin-bottom: 1rem;">
+    <div style="padding: 0 40px; font-weight: 800; font-size: 1.2rem; color: var(--text-color);">
         <i class="fas fa-image" style="color: #10b981;"></i> Poster & Thiết kế Truyền thông
     </div>
-    <div style="overflow: hidden; margin-bottom: 3rem;">
+    
+    <div class="vds-gallery-viewport">
         <div class="vds-scroll-wrap">
             <div class="vds-gallery-card vds-glow-item" onclick="openLightbox('vds_img_1.png')"><img src="vds_img_1.png"></div>
             <div class="vds-gallery-card vds-glow-item" onclick="openLightbox('vds_img_2.png')"><img src="vds_img_2.png"></div>
@@ -1437,6 +1391,7 @@
             <div class="vds-gallery-card vds-glow-item"><img src="vds_img_3.png"></div>
         </div>
     </div>
+</div>
 
     <div style="padding: 0 40px; font-weight: 800; font-size: 1.2rem; color: var(--text-color); margin-bottom: 1rem;">
         <i class="fas fa-play-circle" style="color: #3b82f6;"></i> Video Shorts & Biên tập Nội dung
