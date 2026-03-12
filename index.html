@@ -627,6 +627,7 @@
                 <p class="date-text">2021 - 2025</p>
                 <ul class="project-description-new">
                     <li>Tốt nghiệp loại Giỏi chuyên ngành Truyền thông Marketing.</li>
+                    <li>Đạt danh hiệu Sinh Viên 5 Tốt cấp Khoa năm 2022 - 2023 .</li>
                 </ul>
             </div>
 
@@ -672,7 +673,6 @@
     }
 </script>
 <style>
-    /* Tối ưu UI cho Kỹ năng & Công cụ */
     .category { 
         color: var(--slate-400); 
         font-size: 0.85rem; 
@@ -692,10 +692,25 @@
         margin-left: 15px;
     }
 
-    .skills-grid { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
-        gap: 1.5rem; 
+    /* Container bao ngoài để ẩn phần thừa */
+    .skills-slider-viewport {
+        width: 100%;
+        overflow: hidden;
+        padding: 20px 0;
+        position: relative;
+    }
+
+    /* Thanh chứa các item chạy ngang */
+    .skills-track {
+        display: flex;
+        gap: 1.5rem;
+        width: max-content;
+        animation: scrollSkills 25s linear infinite; /* Tốc độ chạy */
+    }
+
+    /* Tạm dừng khi di chuột vào để người dùng kịp đọc */
+    .skills-slider-viewport:hover .skills-track {
+        animation-play-state: paused;
     }
 
     .skill-item { 
@@ -705,12 +720,13 @@
         text-align: center; 
         border: 1px solid rgba(0, 0, 0, 0.05); 
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-        height: auto; 
+        width: 180px; /* Độ rộng cố định cho mỗi card */
+        flex-shrink: 0;
         display: flex; 
         flex-direction: column; 
         align-items: center; 
         justify-content: center;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         font-weight: 600;
         font-size: 0.9rem;
         color: var(--text-color);
@@ -719,69 +735,92 @@
     .skill-item:hover { 
         border-color: var(--accent-color); 
         transform: translateY(-10px); 
-        box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.1), 0 10px 10px -5px rgba(79, 70, 229, 0.04);
-        background: #fff;
+        box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.1);
     }
 
     .skill-item i { 
         font-size: 2.5rem; 
         color: var(--accent-color); 
         margin-bottom: 15px; 
-        transition: transform 0.3s ease;
     }
 
-    .skill-item:hover i {
-        transform: scale(1.1);
+    /* Hiệu ứng chạy vô tận */
+    @keyframes scrollSkills {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-180px * 6 - 1.5rem * 6)); } 
+        /* Công thức: -(Độ rộng card * số lượng card gốc + Gap * số lượng card gốc) */
     }
+/* Animation trượt từ trái sang phải cho Công cụ */
+.skills-track-reverse {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: scrollTools 30s linear infinite; /* Chậm hơn một chút cho dễ nhìn */
+}
 
-    .skill-item img { 
-        width: 50px; 
-        height: 50px; 
-        object-fit: contain; 
-        margin-bottom: 15px; 
-        filter: grayscale(20%);
-        transition: filter 0.3s ease;
-    }
+@keyframes scrollTools {
+    0% { transform: translateX(calc(-180px * 8 - 1.5rem * 8)); } 
+    100% { transform: translateX(0); }
+}
 
-    .skill-item:hover img {
-        filter: grayscale(0%);
-    }
+/* Giữ style cho hình ảnh công cụ */
+.skill-item img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    filter: grayscale(10%);
+    transition: var(--transition);
+}
 
-    @media (max-width: 480px) {
-        .skills-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-        .skill-item {
-            padding: 1.5rem 1rem;
-        }
-    }
+.skill-item:hover img {
+    filter: grayscale(0%) scale(1.1);
+}
 </style>
 
 <section id="skills">
     <h2 class="section-title">Kỹ năng & Công cụ</h2>
     
     <h3 class="category">Kỹ năng</h3>
-    <div class="skills-grid" style="margin-bottom: 3rem;">
-        <div class="skill-item"><i class="fas fa-search"></i>Nghiên cứu</div>
-        <div class="skill-item"><i class="fas fa-calendar-alt"></i>Lên kế hoạch nội dung</div>
-        <div class="skill-item"><i class="fas fa-lightbulb"></i>Lên ý tưởng nội dung</div>
-        <div class="skill-item"><i class="fas fa-clock"></i>Quản lý thời gian</div>
-        <div class="skill-item"><i class="fas fa-users"></i>Làm việc nhóm & Độc lập</div>
-        <div class="skill-item"><i class="fas fa-robot"></i>Sử dụng AI hỗ trợ công việc</div>
-    </div>
+    <div class="skills-slider-viewport">
+        <div class="skills-track">
+            <div class="skill-item"><i class="fas fa-search"></i>Nghiên cứu</div>
+            <div class="skill-item"><i class="fas fa-calendar-alt"></i>Lập kế hoạch</div>
+            <div class="skill-item"><i class="fas fa-lightbulb"></i>Sáng tạo nội dung</div>
+            <div class="skill-item"><i class="fas fa-clock"></i>Quản lý thời gian</div>
+            <div class="skill-item"><i class="fas fa-users"></i>Làm việc nhóm</div>
+            <div class="skill-item"><i class="fas fa-robot"></i>Sử dụng AI</div>
 
+            <div class="skill-item"><i class="fas fa-search"></i>Nghiên cứu</div>
+            <div class="skill-item"><i class="fas fa-calendar-alt"></i>Lập kế hoạch</div>
+            <div class="skill-item"><i class="fas fa-lightbulb"></i>Sáng tạo nội dung</div>
+            <div class="skill-item"><i class="fas fa-clock"></i>Quản lý thời gian</div>
+            <div class="skill-item"><i class="fas fa-users"></i>Làm việc nhóm</div>
+            <div class="skill-item"><i class="fas fa-robot"></i>Sử dụng AI</div>
+        </div>
+    </div>
     <h3 class="category">Công cụ</h3>
-    <div class="skills-grid">
-        <div class="skill-item"><img src="image_2.png" alt="Word Logo">Word</div>
-        <div class="skill-item"><img src="image_3.png" alt="Excel Logo">Excel</div>
-        <div class="skill-item"><img src="image_4.png" alt="Power Point Logo">Power Point</div>
+<div class="skills-slider-viewport">
+    <div class="skills-track-reverse">
+        <div class="skill-item"><img src="image_2.png" alt="Word">Word</div>
+        <div class="skill-item"><img src="image_3.png" alt="Excel">Excel</div>
+        <div class="skill-item"><img src="image_4.png" alt="Power Point">Power Point</div>
         <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="PS">Photoshop</div>
         <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="AI">Illustrator</div>
         <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="PR">Premiere Pro</div>
-        <div class="skill-item"><img src="image_8.png" alt="Canva Logo">Canva</div>
-        <div class="skill-item"><img src="image_9.png" alt="CapCut Logo">CapCut</div>
+        <div class="skill-item"><img src="image_8.png" alt="Canva">Canva</div>
+        <div class="skill-item"><img src="image_9.png" alt="CapCut">CapCut</div>
+
+        <div class="skill-item"><img src="image_2.png" alt="Word">Word</div>
+        <div class="skill-item"><img src="image_3.png" alt="Excel">Excel</div>
+        <div class="skill-item"><img src="image_4.png" alt="Power Point">Power Point</div>
+        <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="PS">Photoshop</div>
+        <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="AI">Illustrator</div>
+        <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="PR">Premiere Pro</div>
+        <div class="skill-item"><img src="image_8.png" alt="Canva">Canva</div>
+        <div class="skill-item"><img src="image_9.png" alt="CapCut">CapCut</div>
     </div>
+</div>
 </section>
 <style>
     /* Timeline Container tối ưu cho nền sáng */
