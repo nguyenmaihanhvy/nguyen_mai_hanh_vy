@@ -1134,40 +1134,38 @@
 </style>
 
 <style>
-    /* 1. THIẾT LẬP KHUNG TRƯỢT NGANG TỔNG THỂ */
+    <style>
+    /* 1. THIẾT LẬP KHUNG TRƯỢT TỔNG THỂ */
     .mcv-horizontal-rail {
         display: flex;
         gap: 30px;
-        overflow-x: auto;
-        padding: 20px 5px 40px 5px;
+        overflow-x: auto; /* Cho phép trượt ngang */
+        padding: 20px 0 40px 0;
         scroll-snap-type: x mandatory;
-        scrollbar-width: thin; /* Cho Firefox */
+        scrollbar-width: thin;
         scrollbar-color: var(--accent-color) transparent;
     }
 
-    /* Tinh chỉnh thanh cuộn cho Chrome/Safari */
+    /* Tinh chỉnh thanh cuộn cho đẹp */
     .mcv-horizontal-rail::-webkit-scrollbar { height: 8px; }
     .mcv-horizontal-rail::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
     .mcv-horizontal-rail::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 10px; }
 
-    /* 2. ĐỊNH DẠNG MỖI KHỐI DỰ ÁN (GIỮ NGUYÊN NỘI DUNG) */
+    /* 2. KHUNG CHỨA TỪNG DỰ ÁN */
     .performance-block-wrapper {
-        min-width: 800px; /* Đảm bảo đủ rộng để chứa nội dung gốc của bạn */
-        scroll-snap-align: center;
+        min-width: 800px; /* Độ rộng này giúp giữ nguyên layout 2-3 cột bên trong của bạn */
+        scroll-snap-align: start;
         flex-shrink: 0;
     }
 
-    /* Giữ nguyên style cũ của bạn nhưng giới hạn chiều rộng card */
+    /* Đảm bảo card cũ của bạn hiển thị tốt trong khung mới */
     .perf-card-large {
         width: 100%;
-        box-sizing: border-box;
+        height: 100%;
     }
 
-    /* Responsive cho màn hình nhỏ hơn */
     @media (max-width: 992px) {
-        .performance-block-wrapper { min-width: 95%; }
-        .stats-grid { grid-template-columns: 1fr; }
-        .content-grid-reveal { grid-template-columns: repeat(2, 1fr); }
+        .performance-block-wrapper { min-width: 90%; }
     }
 </style>
 
@@ -1181,241 +1179,92 @@
 
             <div class="performance-block-wrapper">
                 <div class="perf-card-large">
-                    <div class="card-header-flex" style="justify-content: space-between; flex-wrap: wrap; gap: 15px;">
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <i class="fab fa-facebook" style="color: #1877F2; font-size: 1.8rem;"></i>
-                            <span style="color: var(--text-color); font-size: 1.2rem; font-weight: 800;">WeTunes (Facebook)</span>
+                    <p style="text-align:center; padding:50px; color:#ccc;"><div class="perf-card-large">
+    <div class="card-header-flex" style="justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <i class="fab fa-facebook" style="color: #1877F2; font-size: 1.8rem;"></i>
+            <span style="color: var(--text-color); font-size: 1.2rem; font-weight: 800;">WeTunes</span>
+        </div>
+        <a href="https://www.facebook.com/WeTunesWN" target="_blank" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem; border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            Ghé thăm fanpage <i class="fas fa-external-link-alt"></i>
+        </a>
+    </div>
+
+    <div class="perf-images-large" style="margin-top: 25px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <div class="glow-card-mcv glow-cold" onclick="openLightbox('WT1.png')" style="height: 250px;">
+            <div class="img-box" style="background: #f8fafc;"><img src="WT1.png" alt="Analytics" style="object-fit: contain; padding: 10px;"></div>
+        </div>
+        <div class="glow-card-mcv glow-cold" onclick="openLightbox('WT2.png')" style="height: 250px;">
+            <div class="img-box" style="background: #f8fafc;"><img src="WT2.png" alt="Analytics" style="object-fit: contain; padding: 10px;"></div>
+        </div>
+    </div>
+
+    <div class="perf-content">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-label">Lượt theo dõi</span>
+                <span class="stat-value">+63K followers</span>
+                <span class="stat-time">(07/2025 - 02/2026)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Tổng lượt xem</span>
+                <span class="stat-value">~60M views</span>
+                <span class="stat-time">(12/2025 - 02/2026)</span>
+            </div>
+        </div>
+        
+        <div class="main-topic" style="margin-top: 50px; text-align: center;">
+            <h2 style="color: var(--text-color); font-weight: 800; font-size: 2rem; margin-bottom: 15px; text-transform: uppercase;">Định hướng nội dung</h2>
+            <p style="color: var(--slate-400); line-height: 1.6; max-width: 800px; margin: 0 auto 30px;">
+                Cập nhật liên tục tin tức giải trí, câu chuyện showbiz, đời sống nghệ sĩ. Khai thác best cut từ các chương trình giải trí đang hot của đối tác.
+            </p>
+            
+            <div class="content-grid-reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;">
+                <div class="glow-card-mcv glow-cold" onclick="openLightbox('wt_content_1.png')" style="aspect-ratio: 3/4;">
+                    <div class="img-box" style="position: relative; overflow: hidden; height: 100%;">
+                        <img src="wt_content_1.png" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="reveal-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(79, 70, 229, 0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; opacity: 0; transform: translateY(100%); transition: 0.4s;">
+                            <h4 style="color: #fff; margin-bottom: 5px; font-size: 1rem;">Showbiz News</h4>
+                            <p style="color: #eee; font-size: 0.75rem;">Tin tức nóng hổi mỗi ngày</p>
                         </div>
-                        <a href="https://www.facebook.com/WeTunesWN" target="_blank" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem; border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 8px;">Ghé thăm <i class="fas fa-external-link-alt"></i></a>
                     </div>
-
-                    <div class="perf-images-large" style="margin-top: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div class="glow-card-mcv glow-cold" onclick="openLightbox('WT1.png')" style="height: 200px;"><div class="img-box"><img src="WT1.png" style="object-fit: contain; padding: 10px;"></div></div>
-                        <div class="glow-card-mcv glow-cold" onclick="openLightbox('WT2.png')" style="height: 200px;"><div class="img-box"><img src="WT2.png" style="object-fit: contain; padding: 10px;"></div></div>
-                    </div>
-
-                    <div class="stats-grid" style="margin-top: 20px;">
-                        <div class="stat-item"><span class="stat-label">Lượt theo dõi</span><span class="stat-value">+63K followers</span></div>
-                        <div class="stat-item"><span class="stat-label">Tổng lượt xem</span><span class="stat-value">~60M views</span></div>
-                    </div>
-
-                    <div class="main-topic" style="margin-top: 30px;">
-                        <h4 style="font-weight: 800; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 15px;">Định hướng nội dung</h4>
-                        <div class="content-grid-reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
-                            <div class="glow-card-mcv glow-cold" style="aspect-ratio: 3/4;"><div class="img-box"><img src="wt_content_1.png" style="object-fit: cover;"></div></div>
-                            <div class="glow-card-mcv glow-cold" style="aspect-ratio: 3/4;"><div class="img-box"><img src="wt_content_2.png" style="object-fit: cover;"></div></div>
-                            <div class="glow-card-mcv glow-cold" style="aspect-ratio: 3/4;"><div class="img-box"><img src="wt_content_3.png" style="object-fit: cover;"></div></div>
+                </div>
+                <div class="glow-card-mcv glow-cold" onclick="openLightbox('wt_content_2.png')" style="aspect-ratio: 3/4;">
+                    <div class="img-box" style="position: relative; overflow: hidden; height: 100%;">
+                        <img src="wt_content_2.png" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="reveal-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(79, 70, 229, 0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; opacity: 0; transform: translateY(100%); transition: 0.4s;">
+                            <h4 style="color: #fff; margin-bottom: 5px; font-size: 1rem;">Trending Cut</h4>
+                            <p style="color: #eee; font-size: 0.75rem;">Best moments từ chương trình hot</p>
                         </div>
                     </div>
+                </div>
+                <div class="glow-card-mcv glow-cold" onclick="openLightbox('wt_content_3.png')" style="aspect-ratio: 3/4;">
+                    <div class="img-box" style="position: relative; overflow: hidden; height: 100%;">
+                        <img src="wt_content_3.png" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="reveal-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(79, 70, 229, 0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; opacity: 0; transform: translateY(100%); transition: 0.4s;">
+                            <h4 style="color: #fff; margin-bottom: 5px; font-size: 1rem;">Social Interaction</h4>
+                            <p style="color: #eee; font-size: 0.75rem;">Xây dựng tương tác cộng đồng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></p>
                 </div>
             </div>
 
             <div class="performance-block-wrapper">
                 <div class="perf-card-large">
-                    <div class="card-header-flex" style="justify-content: space-between; flex-wrap: wrap; gap: 15px;">
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <i class="fab fa-tiktok" style="color: #010101; font-size: 1.8rem;"></i>
-                            <span style="color: var(--text-color); font-size: 1.2rem; font-weight: 800;">WeTunes (TikTok)</span>
-                        </div>
-                        <a href="https://www.tiktok.com/@wetunes.wn" target="_blank" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem; border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 8px;">Ghé thăm <i class="fas fa-external-link-alt"></i></a>
-                    </div>
-
-                    <div class="perf-images-large" style="margin-top: 25px;">
-                        <div class="glow-card-mcv glow-cold" onclick="openLightbox('WT_TikTok_Analytics.png')" style="width: 100%; aspect-ratio: 16/9;"><div class="img-box"><img src="WT_TikTok_Analytics.png" style="object-fit: contain; padding: 15px;"></div></div>
-                    </div>
-
-                    <div class="stats-grid" style="margin-top: 20px;">
-                        <div class="stat-item"><span class="stat-label">Lượt theo dõi</span><span class="stat-value">+7K followers</span></div>
-                        <div class="stat-item"><span class="stat-label">Tổng lượt xem</span><span class="stat-value">~11M views</span></div>
-                    </div>
-
-                    <div class="main-topic" style="margin-top: 30px;">
-                        <h4 style="font-weight: 800; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 15px;">Định hướng nội dung</h4>
-                        <div class="content-grid-reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
-                            <div class="glow-card-mcv glow-cold" style="aspect-ratio: 9/16;"><div class="img-box"><img src="tk_content_1.png" style="object-fit: cover;"></div></div>
-                            <div class="glow-card-mcv glow-cold" style="aspect-ratio: 9/16;"><div class="img-box"><img src="tk_content_2.png" style="object-fit: cover;"></div></div>
-                            <div class="glow-card-mcv glow-cold" style="aspect-ratio: 9/16;"><div class="img-box"><img src="tk_content_3.png" style="object-fit: cover;"></div></div>
-                        </div>
-                    </div>
+                    <p style="text-align:center; padding:50px; color:#ccc;">[Dán nội dung TikTok WeTunes vào đây]</p>
                 </div>
             </div>
 
             <div class="performance-block-wrapper">
                 <div class="perf-card-large">
-                    <div class="card-header-flex" style="justify-content: space-between; flex-wrap: wrap; gap: 15px;">
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <i class="fab fa-tiktok" style="color: #010101; font-size: 1.8rem;"></i>
-                            <span style="color: var(--text-color); font-size: 1.2rem; font-weight: 800;">Bài Gì Cũng Có</span>
-                        </div>
-                        <a href="https://www.tiktok.com/@baigicungco" target="_blank" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem; border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 8px;">Ghé thăm <i class="fas fa-external-link-alt"></i></a>
-                    </div>
-
-                    <div class="perf-images-large" style="margin-top: 25px;">
-                        <div class="glow-card-mcv glow-hot" onclick="openLightbox('BGCC_Analytics.png')" style="width: 100%; aspect-ratio: 16/9;"><div class="img-box"><img src="BGCC_Analytics.png" style="object-fit: contain; padding: 15px;"></div></div>
-                    </div>
-
-                    <div class="stats-grid" style="margin-top: 20px;">
-                        <div class="stat-item"><span class="stat-label">Lượt theo dõi</span><span class="stat-value">+2K followers</span></div>
-                        <div class="stat-item"><span class="stat-label">Tổng lượt xem</span><span class="stat-value">~8M views</span></div>
-                    </div>
-
-                    <div class="main-topic" style="margin-top: 30px;">
-                        <h4 style="font-weight: 800; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 15px;">Định hướng nội dung</h4>
-                        <div class="content-grid-reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
-                            <div class="glow-card-mcv glow-hot" style="aspect-ratio: 9/16;"><div class="img-box"><img src="bgcc_1.png" style="object-fit: cover;"></div></div>
-                            <div class="glow-card-mcv glow-hot" style="aspect-ratio: 9/16;"><div class="img-box"><img src="bgcc_2.png" style="object-fit: cover;"></div></div>
-                            <div class="glow-card-mcv glow-hot" style="aspect-ratio: 9/16;"><div class="img-box"><img src="bgcc_3.png" style="object-fit: cover;"></div></div>
-                        </div>
-                    </div>
+                    <p style="text-align:center; padding:50px; color:#ccc;">[Dán nội dung Bài Gì Cũng Có vào đây]</p>
                 </div>
             </div>
 
         </div> </div>
 </section>
-<style>
-    /* CSS hiệu ứng Reveal */
-    .reveal-card:hover img { transform: scale(1.1); }
-    .reveal-card:hover .reveal-overlay { opacity: 1 !important; transform: translateY(0) !important; }
-    
-    /* Đảm bảo lightbox hiển thị ảnh không bị méo */
-    .lightbox img {
-        max-width: 90%;
-        max-height: 90vh;
-        object-fit: contain;
-    }
-</style>
-<style>
-    /* Khung liên hệ màu xanh tím trong suốt */
-    .huma-footer-box {
-        background: linear-gradient(135deg, rgba(88, 80, 236, 0.1), rgba(139, 92, 246, 0.15)); /* Màu xanh tím trong suốt */
-        backdrop-filter: blur(10px); /* Hiệu ứng mờ nền */
-        border: 1px solid rgba(139, 92, 246, 0.3); /* Viền tím nhẹ */
-        border-radius: 20px;
-        padding: 40px;
-        text-align: center;
-        margin: 50px 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .huma-footer-box h2 {
-        color: #8b5cf6; /* Màu tím điểm nhấn */
-        font-size: 2rem;
-        font-weight: 800;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: center;
-    }
-
-    .huma-contact-info p {
-        font-weight: 600;
-        color: var(--text-color);
-        font-size: 1.1rem;
-        margin: 10px 0;
-    }
-
-    .huma-contact-info a {
-        color: #6366f1; /* Màu xanh tím cho link */
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .huma-contact-info a:hover {
-        color: #8b5cf6;
-        text-decoration: underline;
-    }
-
-    .huma-copyright {
-        font-size: 0.8rem;
-        color: #94a3b8;
-        letter-spacing: 2px;
-        margin-top: 30px;
-        text-transform: uppercase;
-    }
-</style>
-
-<footer id="contact">
-    <div class="huma-footer-box">
-        <h2 style="text-align: center; width: 100%; border: none; margin-bottom: 30px; font-weight: 800; font-size: 2.2rem; color: var(--text-color); display: block;">
-            Liên hệ
-        </h2>
-        
-        <div class="huma-contact-info" style="text-align: center;">
-            <p style="font-weight: 700; color: var(--text-color); font-size: 1.1rem; margin-bottom: 15px;">
-                SĐT: 0986952436 | Email: nmhv29@gmail.com
-            </p>
-            <p>
-                Facebook: <a href="https://www.facebook.com/concuatrenbo" target="_blank" style="color: #6366f1; text-decoration: none; font-weight: 600;">Nguyễn Mai Hạnh Vy</a>
-            </p>
-        </div>
-
-        <p style="text-align: center; font-size: 0.8rem; color: #94a3b8; letter-spacing: 1px; margin-top: 40px;">
-            © 2026 NGUYỄN MAI HẠNH VY. ALL RIGHTS RESERVED.
-        </p>
-    </div>
-</footer>
-
-<div id="lightbox" class="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center;">
-    <span class="close-btn" style="position:absolute; top:20px; right:30px; color:white; font-size:40px; cursor:pointer;">&times;</span>
-    <img id="lightbox-img" src="" alt="Enlarged Image" style="max-width:90%; max-height:90%; border-radius:5px;">
-</div>
-
-<script>
-    function showTab(type) {
-        const eduTab = document.getElementById('tab-edu');
-        const certTab = document.getElementById('tab-cert');
-        const eduContent = document.getElementById('edu-content');
-        const certContent = document.getElementById('cert-content');
-        if (type === 'edu') {
-            if(eduTab) eduTab.classList.add('active'); 
-            if(certTab) certTab.classList.remove('active');
-            if(eduContent) eduContent.style.display = 'block'; 
-            if(certContent) certContent.style.display = 'none';
-        } else {
-            if(certTab) certTab.classList.add('active'); 
-            if(eduTab) eduTab.classList.remove('active');
-            if(eduContent) eduContent.style.display = 'none'; 
-            if(certContent) certContent.style.display = 'block';
-        }
-    }
-
-    function openLightbox(src) { 
-        document.getElementById('lightbox-img').src = src; 
-        document.getElementById('lightbox').style.display = 'flex'; 
-        document.body.style.overflow = 'hidden'; 
-    }
-
-    function closeLightbox() { 
-        document.getElementById('lightbox').style.display = 'none'; 
-        document.body.style.overflow = 'auto'; 
-    }
-</script>
-<script>
-    const words = ["con người", "thương hiệu"];
-    let currentIndex = 0;
-    const textElement = document.getElementById("flip-text");
-
-    function flipText() {
-        if(!textElement) return;
-        
-        // 1. Hiệu ứng biến mất
-        textElement.classList.add("fade-out");
-
-        setTimeout(() => {
-            // 2. Đổi nội dung chữ
-            currentIndex = (currentIndex + 1) % words.length;
-            textElement.innerText = words[currentIndex];
-
-            // 3. Chuẩn bị vị trí cho chữ mới
-            textElement.classList.remove("fade-out");
-            textElement.classList.add("fade-in");
-
-            // 4. Hiệu ứng xuất hiện
-            setTimeout(() => {
-                textElement.classList.remove("fade-in");
-            }, 50);
-        }, 500); // 500ms là thời gian khớp với transition trong CSS
-    }
-
-    // Chạy hiệu ứng lặp lại mỗi 3 giây
-    setInterval(flipText, 3000);
-</script>
