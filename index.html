@@ -1531,8 +1531,7 @@
 </div>
 </div>
 </div>
-    <style>
-    <style>
+   <style>
     /* 1. KHUNG BAO CHUYÊN ĐỀ VDS */
     .vds-section-wrapper {
         background-color: #fcfcfd;
@@ -1540,7 +1539,7 @@
         padding: 80px 0;
         margin: 4rem 0;
         border: 1px solid #f1f5f9;
-        /* Xóa overflow: hidden ở đây nếu nó làm mất bóng đổ của tiêu đề */
+        /* Đã gỡ bỏ overflow: hidden để không bị cắt bóng đổ khi hover */
     }
 
     .vds-badge {
@@ -1555,43 +1554,40 @@
         box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
     }
 
-    /* 2. FIX LỖI ÁNH SÁNG: HIỆU ỨNG HÀO QUANG TRỌN VẸN */
+    /* 2. HIỆU ỨNG ÁNH SÁNG TRỌN VẸN */
     .vds-glow-item {
         position: relative;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         border: 2px solid transparent;
-        z-index: 1; /* Đảm bảo item nổi lên trên để thấy rõ bóng */
+        z-index: 1;
     }
 
-    /* Khi hover: Nhấc khung và tỏa hào quang không bị chặn */
+    /* Hiệu ứng hào quang lan tỏa không bị chặn bởi khung */
     .vds-glow-item:hover {
-        transform: translateY(-12px) scale(1.02);
-        z-index: 99; /* Ưu tiên hiển thị lớp sáng trên cùng */
-        /* Sử dụng nhiều lớp shadow để ánh sáng tỏa đều và sâu hơn */
-        box-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 
-                    0 0 40px rgba(59, 130, 246, 0.4),
-                    0 15px 35px rgba(0, 0, 0, 0.1);
-        border-color: rgba(16, 185, 129, 0.5);
+        transform: translateY(-15px) scale(1.03);
+        z-index: 10;
+        box-shadow: 0 0 25px rgba(16, 185, 129, 0.4), 
+                    0 0 50px rgba(59, 130, 246, 0.3),
+                    0 20px 40px rgba(0, 0, 0, 0.1);
+        border-color: rgba(16, 185, 129, 0.3);
     }
 
-    /* 3. GALLERY TRƯỢT TỰ ĐỘNG - THÊM PADDING ĐỂ KHÔNG BỊ CẮT BÓNG */
+    /* 3. GALLERY TRƯỢT TỰ ĐỘNG (SOCIAL POSTS) */
+    .vds-gallery-viewport {
+        overflow: hidden; /* Chỉ cắt ngang ở đây */
+        padding: 40px 0; /* Tạo không gian phía trên để bóng đổ (glow) không bị cắt */
+        width: 100%;
+    }
+
     .vds-scroll-wrap {
         display: flex;
         width: max-content;
         gap: 25px;
-        /* QUAN TRỌNG: Thêm padding dọc lớn để có không gian cho ánh sáng tỏa ra */
-        padding: 40px 40px; 
+        padding: 0 40px; /* Padding ngang để item đầu tiên không sát lề */
         animation: scrollVDS 35s linear infinite;
     }
 
     .vds-scroll-wrap:hover { animation-play-state: paused; }
-
-    /* Container bao quanh vùng trượt để ẩn phần thừa nhưng vẫn giữ không gian cho bóng */
-    .vds-gallery-viewport {
-        overflow: hidden;
-        margin: 0;
-        width: 100%;
-    }
 
     .vds-gallery-card {
         width: 280px;
@@ -1607,14 +1603,65 @@
 
     @keyframes scrollVDS {
         0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-305px * 5)); }
+        100% { transform: translateX(calc(-305px * 3)); } /* Chỉnh theo số lượng ảnh gốc */
+    }
+
+    /* 4. ĐỊNH DẠNG VIDEO MARKETING (16:9 SINGLE) */
+    .vds-single-video-container {
+        padding: 20px 40px 60px;
+        max-width: 900px; /* Giới hạn độ rộng video để không bị quá to */
+    }
+
+    .vds-video-card {
+        width: 100%;
+        aspect-ratio: 16 / 9; /* Ép tỉ lệ chuẩn YouTube */
+        border-radius: 24px;
+        overflow: hidden;
+        background: #000;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .vds-video-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: 0.4s;
+    }
+
+    .vds-video-card:hover img { opacity: 1; }
+
+    .video-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #3b82f6;
+        font-size: 1.5rem;
+        transition: 0.3s;
+        z-index: 2;
+    }
+
+    .vds-video-card:hover .video-overlay {
+        transform: translate(-50%, -50%) scale(1.1);
+        background: #fff;
+        color: #10b981;
     }
 </style>
 
 <div class="vds-section-wrapper">
     <div class="vds-badge">Công Ty Cổ Phần Giải Pháp Nền Tảng Số (VDS)</div>
+    
     <div style="padding: 0 40px; font-weight: 800; font-size: 1.2rem; color: var(--text-color);">
-        <i class="fas fa-image" style="color: #10b981;"></i> Social Post/Banner
+        <i class="fas fa-image" style="color: #10b981;"></i> Social Post / Banner
     </div>
     
     <div class="vds-gallery-viewport">
@@ -1622,23 +1669,20 @@
             <div class="vds-gallery-card vds-glow-item" onclick="openLightbox('vds_img_1.png')"><img src="vds_img_1.png"></div>
             <div class="vds-gallery-card vds-glow-item" onclick="openLightbox('vds_img_2.png')"><img src="vds_img_2.png"></div>
             <div class="vds-gallery-card vds-glow-item" onclick="openLightbox('vds_img_3.png')"><img src="vds_img_3.jpg"></div>
-            <div class="vds-gallery-card vds-glow-item"><img src="vds_img_1.png"></div>
-            <div class="vds-gallery-card vds-glow-item"><img src="vds_img_2.png"></div>
-            <div class="vds-gallery-card vds-glow-item"><img src="vds_img_3.jpg"></div>
+            <div class="vds-gallery-card vds-glow-item" onclick="openLightbox('vds_img_1.png')"><img src="vds_img_1.png"></div>
+            <div class="vds-gallery-card vds-glow-item" onclick="openLightbox('vds_img_2.png')"><img src="vds_img_2.png"></div>
+            <div class="vds-gallery-card vds-glow-item" onclick="openLightbox('vds_img_3.png')"><img src="vds_img_3.jpg"></div>
         </div>
     </div>
-    </div>
-</div>
 
-    <div style="padding: 0 40px; font-weight: 800; font-size: 1.2rem; color: var(--text-color); margin-bottom: 1rem;">
+    <div style="padding: 0 40px; font-weight: 800; font-size: 1.2rem; color: var(--text-color); margin-top: 2rem;">
         <i class="fas fa-play-circle" style="color: #3b82f6;"></i> Video Marketing
     </div>
-    <div style="overflow: hidden;">
-        <div class="vds-scroll-wrap" style="animation-direction: reverse;">
-            <div class="vds-gallery-card vds-glow-item" onclick="openLightbox('vds_vid_1.mp4')">
-                <img src="vds_vid_1.png"><div class="video-overlay"><i class="fas fa-play"></i></div>
-            </div>
-            <div class="vds-gallery-card vds-glow-item"><img src="vds_vid_1png"><div class="video-overlay"><i class="fas fa-play"></i></div></div>
+
+    <div class="vds-single-video-container">
+        <div class="vds-video-card vds-glow-item" onclick="openLightbox('vds_vid_1.mp4')">
+            <img src="vds_vid_1.png">
+            <div class="video-overlay"><i class="fas fa-play"></i></div>
         </div>
     </div>
 </div>
