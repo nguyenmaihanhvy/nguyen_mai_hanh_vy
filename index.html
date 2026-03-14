@@ -140,6 +140,23 @@
 
             .thanks-script { font-size: 5rem; }
         }
+/* Hiệu ứng trượt cho Flip Text */
+.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: none; /* Reset vị trí lập tức để chuẩn bị trượt lên */
+}
+
+.flip-text {
+    display: inline-block;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
     </style>
 </head>
 <body>
@@ -166,7 +183,9 @@
             <div class="intro-text">
                 <span class="slogan-text">
                     Kết nối giá trị 
-                    <span class="flip-wrapper">con người</span> 
+                    <span class="flip-wrapper">
+    <span id="flip-text" class="flip-text">con người</span>
+</span> 
                     qua những điểm chạm cảm xúc tinh tế.
                 </span>
                 <p style="font-size: 1rem; opacity: 0.8;">
@@ -182,7 +201,7 @@
                 <div class="stat-divider"></div>
                 <div class="stat-box">
                     <span class="stat-number">60K+</span>
-                    <span class="stat-label">Followers tăng / 7th</span>
+                    <span class="stat-label">Tăng trưởng followers trong 6 tháng </span>
                 </div>
             </div>
 
