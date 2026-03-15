@@ -180,8 +180,22 @@
             .intro-text { border-left: none; border-top: 3px solid var(--accent-color); padding: 20px 0 0; }
             .stats-badge-container { justify-content: center; }
         }
+@media (max-width: 768px) {
+    /* --- Đây là đoạn gợi ý số 2 bạn cần thêm --- */
+    .btn-group {
+        flex-direction: column; /* Chuyển từ nằm ngang sang xếp chồng dọc */
+        gap: 12px;
+        width: 100%;
+    }
 
-        @media (max-width: 768px) {
+    .btn {
+        width: 100%; /* Cho nút dài ra hết màn hình để dễ bấm */
+        text-align: center;
+        padding: 1.2rem; /* Làm nút dày hơn một chút cho UX mobile */
+        margin-left: 0 !important; /* Xóa khoảng cách bên trái nếu có */
+    }
+    /* ------------------------------------------ */
+}
             section { padding: 140px 1.5rem 60px; }
             nav ul li::before {
         content: none !important; /* Xóa bỏ chấm tròn */
